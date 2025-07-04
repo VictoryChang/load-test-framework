@@ -3,6 +3,23 @@
 ## Motivation
 Create a Load API Test Framework, built with the python open source library locust, that is simple to read, run, and extend.
 
+## Design Pattern
+Locust uses the concept of "Users" as a method of structuring performance tests with code. Configurable properties include: how long a user waits between calls, the total number of users to test with, and how quickly they are added to the test.
+
+```python
+from random import randint
+import logging
+
+from locust import HttpUser, task, between
+
+
+class User(HttpUser):
+    wait_time = between(1, 5)
+    @task
+    def get_fast(self):
+        self.client.get("/fast")
+```
+
 
 ## Environment Setup
 1. python -m venv venv
