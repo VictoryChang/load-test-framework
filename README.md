@@ -13,8 +13,19 @@ Create a Load API Test Framework, built with the python open source library locu
 ## Running Basic Load Tests, that do not require authentication
 1. Run a local server built using FastAPI
     1. python main.py
+
 2. Run the locust load test application
-    1. locust --users 1 --spawn-rate 1 -H http://0.0.0.0:8000/
+    1. UI: locust --users 1 --spawn-rate 1 -H http://0.0.0.0:8000
+    2. Headless Mode: locust --users 1 --spawn-rate 1 -H http://0.0.0.0:8000 --headless
+
+## Types of Tests
+
+|Test|Description|Total Users|Ramp Up Speed (per second)|Duration|
+|---|---|---|---|---|
+|Load|Real-life Application Load|10|1|Standard|
+|Stress|Finding the first bottleneck|1000|1|Standard|
+|Spike|Sudden High Ramp Up|1000|1000|Short|
+|Endurance|Slow Ramp Up, Long Period of Time|10|1|Long|
 
 
 ## Analyzing the Results
